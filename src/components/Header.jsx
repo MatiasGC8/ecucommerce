@@ -1,71 +1,97 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="relative flex flex-col-reverse px-4 py-16 mx-auto lg:block lg:flex-col lg:py-32 xl:py-48 md:px-8 sm:max-w-xl md:max-w-full">
-      <div className="z-0 flex justify-center h-full -mx-4 overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center">
-        <img
-          src="https://kitwind.io/assets/kometa/laptop.png"
-          className="object-cover object-right w-full h-auto lg:w-auto lg:h-full"
-          alt=""
-        />
-      </div>
-      <div className="relative flex justify-end max-w-xl mx-auto xl:pr-32 lg:max-w-screen-xl">
-        <div className="mb-16 lg:pr-5 lg:max-w-lg lg:mb-0">
-          <div className="max-w-xl mb-6">
-            <div>
-              <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                Brand new
-              </p>
-            </div>
-            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-              We will bring your
-              <br className="hidden md:block" />
-              business{' '}
-              <span className="inline-block text-deep-purple-accent-400">
-                online
-              </span>
-            </h2>
-            <p className="text-base text-gray-700 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae. explicabo.
-            </p>
-          </div>
-          <form>
-            <div className="flex flex-col md:flex-row">
-              <input
-                placeholder="Name"
-                required=""
-                type="text"
-                className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mr-2 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-              />
-              <input
-                placeholder="Email"
-                required=""
-                type="text"
-                className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-              />
-            </div>
-            <div className="flex items-center mt-4">
+    <header className="bg-white dark:bg-gray-900">
+      <nav className="px-6 py-4 shadow">
+        <div className="lg:items-center lg:justify-between lg:flex">
+          <div className="flex items-center justify-between">
+            <a href="#" className="mx-auto ">
+              <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="Logo" />
+            </a>
+
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
               <button
-                type="submit"
-                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                onClick={() => setIsOpen(!isOpen)}
+                type="button"
+                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                aria-label="toggle menu"
               >
-                Subscribe
+                {!isOpen ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )}
               </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:bg-transparent lg:dark:bg-transparent lg:shadow-none dark:bg-gray-900 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${
+              isOpen ? 'translate-x-0 opacity-100' : 'opacity-0 -translate-x-full'
+            }`}
+          >
+            <a href="#" className="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">
+              Home
+            </a>
+            <a href="#" className="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">
+              About
+            </a>
+            <a href="#" className="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">
+              Contact
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="lg:flex">
+        <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+              Build Your New <span className="text-blue-600 dark:text-blue-400">Idea</span>
+            </h2>
+
+            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates.
+            </p>
+
+            <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
               <a
-                href="/"
-                aria-label=""
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                href="#"
+                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700"
               >
-                Learn more
+                Get Started
+              </a>
+              <a
+                href="#"
+                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300"
+              >
+                Learn More
               </a>
             </div>
-          </form>
+          </div>
+        </div>
+
+        <div className="w-full h-64 lg:w-1/2 lg:h-auto">
+          <div
+            className="w-full h-full bg-cover"
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)',
+            }}
+          >
+            <div className="w-full h-full bg-black opacity-25"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 
